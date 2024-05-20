@@ -1,0 +1,130 @@
+﻿<Window x:Class="PawnMasterWPF.AdminPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PawnMasterWPF"
+        mc:Ignorable="d"
+                     Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
+
+    <Grid Background="DimGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="589*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="106*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Name="firstPage" Grid.RowSpan="2" Style="{StaticResource CustomTabControlStyle}" Grid.ColumnSpan="3">
+
+            <TabItem Header="Сотрудники">
+                <TabItem.Resources>
+                    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="RowBackground" Value="DimGray"/>
+                        <Setter Property="AlternatingRowBackground" Value="DimGray"/>
+                        <Setter Property="GridLinesVisibility" Value="None"/>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="CanUserResizeColumns" Value="False"/>
+                        <Setter Property="CanUserReorderColumns" Value="False"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="DimGray"/>
+                    </Style>
+                    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="BorderBrush" Value="DimGray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="DimGray"/>
+                    </Style>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderBrush" Value="LightGray"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                    </Style>
+                </TabItem.Resources>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="88*"/>
+                        <RowDefinition Height="88*"/>
+                        <RowDefinition Height="827*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="707*"/>
+                        <ColumnDefinition Width="82*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Удалить" Click="DeleteProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="144"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Content="Добавить" Click="AddUser_Click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="144"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Loaded="UserDataGrid_OnLoaded" 
+                  Style="{StaticResource DataGridStyle}" 
+                  RowStyle="{StaticResource DataGridRowStyle}" Grid.Row="0" Grid.RowSpan="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="250" Header="ФИО сотрудника" Binding="{Binding EmployeeFullName}" />
+                            <DataGridTextColumn MinWidth="250" Header="Номер телефона" Binding="{Binding EmployeePhoneNumber}" />
+                            <DataGridTextColumn MinWidth="250" Header="Почта" Binding="{Binding EmployeeEmail}" />
+                            <DataGridTextColumn MinWidth="250" Header="Логин" Binding="{Binding EmployeeLogin}" />
+                            <DataGridTextColumn MinWidth="250" Header="Пароль" Binding="{Binding EmployeePassword}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Все товары">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="127*"/>
+                        <RowDefinition Height="127*"/>
+                        <RowDefinition Height="650*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1073*"/>
+                        <ColumnDefinition Width="505*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <DataGrid x:Name="AllProductDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0"
+                       Style="{StaticResource DataGridStyle}" 
+                       RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
+                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPrice}" />
+                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
+                            <DataGridTextColumn MinWidth="200" Header="Статус товара" Binding="{Binding ProductIndex}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Удалить" Click="DeleteProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="490"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Button Height="30" Width="100" Content="Cancel" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="17" Background="DarkGray" Foreground="White" Click="Cancel_Click" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
+

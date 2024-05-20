@@ -1,0 +1,214 @@
+﻿<Window x:Class="PawnMasterWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PawnMasterWPF"
+        mc:Ignorable="d"
+              Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
+
+    <Grid Background="DimGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="589*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="106*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Name="firstPage" Grid.RowSpan="2" Style="{StaticResource CustomTabControlStyle}" Grid.ColumnSpan="3">
+            <TabItem Header="PawnMaster">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="139*"/>
+                        <RowDefinition Height="22*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="233"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Name="NameUser" 
+                                   FontSize="20" 
+                                   Foreground="White" 
+                                   FontFamily="Gill Sans Ultra Bold"></TextBlock>
+                    <TextBlock Text="Программа для ведения учета товара в ломбарде" 
+                               FontSize="40" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,15,0,15" 
+                               FontFamily="Gill Sans Ultra Bold" 
+                               FontStyle="Italic" Width="1050" />
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
+                        <TextBlock TextWrapping="Wrap" 
+                                   FontSize="30" 
+                                   Foreground="White" 
+                                   Margin="0,15,0,15" 
+                                   FontFamily="Gill Sans Ultra Bold" 
+                                   FontStyle="Italic">
+                            PawnMaster - это комплексное программное обеспечение, разработанное для учета и управления деятельностью ломбарда. Он обеспечивает эффективное добавление, продажу и управление товарами, а также учетные записи сотрудников. В основе PawnMaster лежит простой и интуитивно понятный интерфейс, который позволяет пользователям легко освоить все функции программы. Он предоставляет возможность добавлять новые товары, указывать их описание и стоимость, а также отслеживать дату поступления. Кроме того, PawnMaster позволяет осуществлять продажу товаров с отметкой о продаже, указанием цены и даты продажи. Также имеется возможность управления учетными записями сотрудников с различными уровнями доступа. PawnMaster предоставляет возможность генерации отчетов по проданным и текущим товарам, а также экспорта этих отчетов для последующего анализа.
+                        </TextBlock>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Учет продаж">
+                <TabItem.Resources>
+                    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="RowBackground" Value="DimGray"/>
+                        <Setter Property="AlternatingRowBackground" Value="DimGray"/>
+                        <Setter Property="GridLinesVisibility" Value="None"/>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="CanUserResizeColumns" Value="False"/>
+                        <Setter Property="CanUserReorderColumns" Value="False"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="DimGray"/>
+                    </Style>
+                    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="BorderBrush" Value="DimGray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="DimGray"/>
+                    </Style>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderBrush" Value="LightGray"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                    </Style>
+                </TabItem.Resources>
+                <Grid>
+                    <DataGrid x:Name="salesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                  Style="{StaticResource DataGridStyle}" 
+                  RowStyle="{StaticResource DataGridRowStyle}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
+                            <DataGridTextColumn MinWidth="200" Header="Индекс товара" Binding="{Binding ProductIndex}" />
+                            <DataGridTextColumn MinWidth="200" Header="Цена товара" Binding="{Binding ProductPrice}" />
+                            <DataGridTextColumn MinWidth="250" Header="Продавец" Binding="{Binding SalePrice}" />
+                            <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding SalePrice}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding SaleDate}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Добавление товара">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="246"/>
+                        <ColumnDefinition Width="981"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <DockPanel HorizontalAlignment="Left"  VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" >
+                        <Label x:Name="NameItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Название продукта:" FontSize="30" Width="371" Foreground="White"/>
+                        <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="NameItemTextBox" DockPanel.Dock="Left" Height="70" Width="330"  BorderBrush="DimGray" Margin="5,0,0,0"/>
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row ="1">
+                        <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="30" Width="371" Foreground="White"/>
+                        <DatePicker x:Name="ProductDateDatePicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="30"/>
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900"  Grid.Column="1" Grid.Row ="2" >
+                        <Label x:Name="PriceLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Цена товара:" FontSize="30" Width="371" Foreground="White"/>
+                        <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="ProductPriceTextBox" DockPanel.Dock="Left" Height="70" Width="330" BorderBrush="DimGray"/>
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900"  Grid.Column="1" Grid.Row ="3"  Grid.ColumnSpan="2" >
+                        <Label x:Name="DescriptionLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="30" Width="371" Foreground="White"/>
+                        <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="DescriptionTextBox" DockPanel.Dock="Right" Height="115" Width="330" BorderBrush="DimGray" />
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="900"  Grid.Column="1" Grid.Row ="4"  >
+                        <Label x:Name="ImageItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="30" Width="371" Foreground="White"/>
+                        <Button Height="40" Width="299" Content="Добавит изображение" Background="DarkGray" Foreground="White" Click="ImageAdd_Click">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </DockPanel>
+
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="426,10,0,0" Width="421"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="5" Click="ProductAdd_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Товары в наличие">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="127*"/>
+                        <RowDefinition Height="127*"/>
+                        <RowDefinition Height="650*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="500*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="ProductAvailabilityDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0"
+                       Style="{StaticResource DataGridStyle}" 
+                       RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
+                            <DataGridTextColumn MinWidth="200" Header="Индекс товара" Binding="{Binding ProductIndex}" />
+                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPrice}" />
+                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Куплено" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Content="Открыть карточку твоара" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Button Height="30" Width="100" Content="Login" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="17" Background="DarkGray" Foreground="White" Click="Login_Click" Grid.Column="1" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Height="30" Width="100" Content="AdminPanel" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="17" Background="DarkGray" Foreground="White" Click="AdminPanel_Click" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
