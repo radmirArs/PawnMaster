@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModelForPawnMaster
 {
-    internal class SaleProduct
+    public class SaleProduct
     {
         public string ProductName { get; set; }
-        public int ProductPriceBuy { get; set; }
-        public int ProductPriceSale { get; set; }
+        public string ProductPriceBuy { get; set; }
+        public string ProductPriceSale { get; set; }
         public string EmployeeName { get; set; }
         public string ProductDateBuy { get; set; }
         public string ProductDateSale { get; set; }

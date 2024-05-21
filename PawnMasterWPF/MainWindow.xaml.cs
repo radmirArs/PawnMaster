@@ -47,10 +47,6 @@ public partial class MainWindow : Window
         }
     }
 
-    private void PurchaseProduct_click(object sender, RoutedEventArgs e)
-    {
-
-    }
 
     private void Login_Click(object sender, RoutedEventArgs e)
     {
@@ -108,5 +104,58 @@ public partial class MainWindow : Window
     {
         List<Product> product = ProductControl.ReceivingProduct();
         ProductAvailabilityDataGrid.ItemsSource = product;
+    }
+
+    private void OpenCardProduct_click(object sender, RoutedEventArgs e)
+    {
+        var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
+        if(selectedProduct != null)
+        {
+            List<Product> products = ProductControl.ReceivingProduct();
+            foreach(Product product in products)
+            {
+                if(product.ProductName == selectedProduct.ProductName && product.ProductPriceBuy == selectedProduct.ProductPriceBuy && product.ProductDateBuy == selectedProduct.ProductDateBuy) 
+                {
+                    ProductCardWindow productCardWindow = new ProductCardWindow();
+                    productCardWindow.FillingInData(product);
+                    productCardWindow.ShowDialog();
+                }
+            }
+        }
+    }
+
+    private void PurchaseProduct_click(object sender, RoutedEventArgs e)
+    {
+        SaleProductWindow saleProductWindow = new SaleProductWindow();
+        saleProductWindow.ShowDialog();
+        string dateSale = saleProductWindow.Date;
+        string priceSale = saleProductWindow.Price;
+        var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
+        if (selectedProduct != null)
+        {
+            List<Product> products = ProductControl.ReceivingProduct();
+            foreach (Product product in products)
+            {
+                if (product.ProductName == selectedProduct.ProductName && product.ProductPriceBuy == selectedProduct.ProductPriceBuy && product.ProductDateBuy == selectedProduct.ProductDateBuy)
+                {
+                    SaleProduct newSaleProduct = new SaleProduct()
+                    {
+                        ProductName = product.ProductName,
+                        EmployeeName = loggedEmployee.EmployeeFullName,
+                        ProductDateBuy = product.ProductDateBuy,
+                        ProductPriceBuy = product.ProductPriceBuy,
+                        ProductDateSale = dateSale,
+                        ProductPriceSale = priceSale
+                    };
+                    ProductControl.AddProductSale(newSaleProduct);
+                }
+            }
+        }
+    }
+
+    private void salesDataGrid_Loaded(object sender, RoutedEventArgs e)
+    {
+        List<SaleProduct> SaleProduct = ProductControl.ReceivingSaleProduct();
+        salesDataGrid.ItemsSource = SaleProduct;
     }
 }

@@ -70,7 +70,7 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
+ 
                     <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Loaded="UserDataGrid_OnLoaded" 
                   Style="{StaticResource DataGridStyle}" 
                   RowStyle="{StaticResource DataGridRowStyle}" Grid.Row="0" Grid.RowSpan="3">

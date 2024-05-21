@@ -1,0 +1,20 @@
+﻿<Window x:Class="PawnMasterWPF.SaleProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PawnMasterWPF"
+        mc:Ignorable="d"
+        Title="ProductSaleWindow" Height="200" Width="200" Background="DimGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="62*"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="PriceSaleProductTextBox" Grid.Row="1" Height="20" Width="100" VerticalContentAlignment="Bottom" Margin="50,22,50,1" FontSize="10" />
+        <DatePicker Name="DateSaleProductTextBox" Grid.Row="2" Height="20" Width="100" VerticalContentAlignment="Bottom" Margin="50,22,50,1" FontSize="10" />
+        <Button Grid.Row="3" Height="20" Width="100" Content="Продано" Click="SaleProduct_click">   </Button>
+    </Grid>
+</Window>

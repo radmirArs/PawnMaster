@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelForPawnMaster;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,8 +27,11 @@ namespace PawnMasterWPF
 
         }
 
-        private void FillingInData(string productName, string productDescription, byte[] productImageData)
+        public void FillingInData(Product selectProduct)
         {
+            string productName = selectProduct.ProductName;
+            string productDescription = selectProduct.ProductDescription;
+            byte[] productImageData = selectProduct.ProductImageData;
             if (productImageData != null)
             {
                 byte[] decodedBytes = productImageData;

@@ -81,17 +81,17 @@
                     </Style>
                 </TabItem.Resources>
                 <Grid>
-                    <DataGrid x:Name="salesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                    <DataGrid x:Name="salesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  Loaded="salesDataGrid_Loaded"
                   Style="{StaticResource DataGridStyle}" 
                   RowStyle="{StaticResource DataGridRowStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                           
-                            <DataGridTextColumn MinWidth="200" Header="Цена товара" Binding="{Binding ProductPrice}" />
-                            <DataGridTextColumn MinWidth="250" Header="Продавец" Binding="{Binding SalePrice}" />
-                            <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding SalePrice}" />
-                            <DataGridTextColumn MinWidth="200" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
-                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding SaleDate}" />
+
+                            <DataGridTextColumn MinWidth="200" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding ProductDateBuy}" />
+                            <DataGridTextColumn MinWidth="250" Header="Продавец" Binding="{Binding EmployeeName}" />
+                            <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding ProductPriceSale}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding ProductDateSale}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -183,7 +183,7 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Открыть карточку твоара" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1">
+                    <Button Content="Открыть карточку твоара" Click="OpenCardProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1" >
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
