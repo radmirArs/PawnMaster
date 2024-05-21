@@ -1,6 +1,13 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using PawnMasterLibrary;
 using System.ComponentModel;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows.Media.Imaging;
+using ArslanbekovLibrary;
+using ModelForPawnMaster;
+using PawnMasterLibrary;
 
 namespace PawnMasterWPF;
 
@@ -10,7 +17,8 @@ namespace PawnMasterWPF;
 public partial class MainWindow : Window
 {
     string _role;
-    //надо добавлят имя пользователя на первом экране
+
+    List<byte> imageDataList = new List<byte>();
 
     private Employee loggedEmployee;
     public MainWindow()
@@ -20,7 +28,23 @@ public partial class MainWindow : Window
 
     private void ImageAdd_Click(object sender, RoutedEventArgs e)
     {
+        ImageAdd();
+    }
 
+    void ImageAdd()
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+       
+        if (openFileDialog.ShowDialog() == true)
+        {
+            string selectedImagePath = openFileDialog.FileName;
+            byte[] imageBytes = File.ReadAllBytes(selectedImagePath);
+            foreach(byte imageByte in imageBytes)
+            {
+                imageDataList.Add(imageByte);
+            }
+        }
     }
 
     private void PurchaseProduct_click(object sender, RoutedEventArgs e)
@@ -67,6 +91,22 @@ public partial class MainWindow : Window
 
     private void ProductAdd_Click(object sender, RoutedEventArgs e)
     {
+        string productName = NameItemTextBox.Text;
+        string productDateBuy = ProductDateBuyPicker.Text;
+        string productPrice = ProductPriceTextBox.Text;
+        string productDescription = DescriptionTextBox.Text;
+        byte[] imageData = imageDataList.ToArray();
+        var newProduct = new Product()
+        {
+            ProductName = productName, ProductDateBuy = productDateBuy, ProductDescription = productDescription,
+            ProductImageData = imageData, ProductPriceBuy = productPrice
+        };
+        ProductControl.AddProduct(newProduct);
+    }
 
+    private void ProductAvailabilityDataGrid_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        List<Product> product = ProductControl.ReceivingProduct();
+        ProductAvailabilityDataGrid.ItemsSource = product;
     }
 }

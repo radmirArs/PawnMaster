@@ -86,7 +86,7 @@
                   RowStyle="{StaticResource DataGridRowStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                            <DataGridTextColumn MinWidth="200" Header="Индекс товара" Binding="{Binding ProductIndex}" />
+                           
                             <DataGridTextColumn MinWidth="200" Header="Цена товара" Binding="{Binding ProductPrice}" />
                             <DataGridTextColumn MinWidth="250" Header="Продавец" Binding="{Binding SalePrice}" />
                             <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding SalePrice}" />
@@ -121,7 +121,7 @@
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row ="1">
                         <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="30" Width="371" Foreground="White"/>
-                        <DatePicker x:Name="ProductDateDatePicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="30"/>
+                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="30"/>
                     </DockPanel>
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900"  Grid.Column="1" Grid.Row ="2" >
@@ -135,7 +135,7 @@
                     </DockPanel>
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="900"  Grid.Column="1" Grid.Row ="4"  >
-                        <Label x:Name="ImageItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="30" Width="371" Foreground="White"/>
+                        <Label x:Name="ImageItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Фото товара:" FontSize="30" Width="371" Foreground="White"/>
                         <Button Height="40" Width="299" Content="Добавит изображение" Background="DarkGray" Foreground="White" Click="ImageAdd_Click">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}">
@@ -166,14 +166,14 @@
                         <ColumnDefinition Width="500*"/>
                         <ColumnDefinition Width="300*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="ProductAvailabilityDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0"
+                    <DataGrid x:Name="ProductAvailabilityDataGrid" AutoGenerateColumns="False" Loaded="ProductAvailabilityDataGrid_OnLoaded" CanUserAddRows="False" Grid.Column="0"
                        Style="{StaticResource DataGridStyle}" 
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                            <DataGridTextColumn MinWidth="200" Header="Индекс товара" Binding="{Binding ProductIndex}" />
-                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPrice}" />
-                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
+                            
+                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
+                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateBuy}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Куплено" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
