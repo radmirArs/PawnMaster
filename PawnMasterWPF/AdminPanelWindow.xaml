@@ -97,14 +97,14 @@
                         <ColumnDefinition Width="505*"/>
                     </Grid.ColumnDefinitions>
                     
-                    <DataGrid x:Name="AllProductDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0"
+                    <DataGrid x:Name="AllProductDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0" Loaded="AllProductDataGrid_OnLoaded"
                        Style="{StaticResource DataGridStyle}" 
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPrice}" />
-                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding PurchaseDate}" />
-                            <DataGridTextColumn MinWidth="200" Header="Статус товара" Binding="{Binding ProductIndex}" />
+                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
+                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateSale}" />
+                            <DataGridTextColumn MinWidth="200" Header="Статус товара" Binding="{Binding IsSale}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Удалить" Click="DeleteProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="490"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">

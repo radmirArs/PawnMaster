@@ -8,11 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="747d6cea-ce18-4110-b533-e003aacad807" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ModelForPawnMaster/Employee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ModelForPawnMaster/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/ProductSaled.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/SaleProduct.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/EmployeeControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/EmployeeControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/LoginUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/LoginUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/ProductControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/ProductControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Employee.json" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Employee.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Product.json" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Product.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/SaleProduct.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +31,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2glUJKEQ4oX1N3V8fjN7wi9cn2p" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,10 +53,14 @@
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite",
+      "postgresql"
+    ],
     "rider.external.source.directories": [
-      "C:\\Users\\zatway\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\zatway\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\zatway\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\РАР\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\РАР\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\РАР\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -82,6 +94,7 @@
       <updated>1716271595590</updated>
       <workItem from="1716271605558" duration="36000" />
       <workItem from="1716271685515" duration="1486000" />
+      <workItem from="1716396201601" duration="8378000" />
     </task>
     <servers />
   </component>

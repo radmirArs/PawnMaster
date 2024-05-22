@@ -1,13 +1,8 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using PawnMasterLibrary;
-using System.ComponentModel;
 using Microsoft.Win32;
 using System.IO;
-using System.Windows.Media.Imaging;
-using ArslanbekovLibrary;
 using ModelForPawnMaster;
-using PawnMasterLibrary;
 
 namespace PawnMasterWPF;
 
@@ -92,29 +87,41 @@ public partial class MainWindow : Window
         string productPrice = ProductPriceTextBox.Text;
         string productDescription = DescriptionTextBox.Text;
         byte[] imageData = imageDataList.ToArray();
+        List<Product> products = ProductControl.ReceivingProduct();
         var newProduct = new Product()
         {
             ProductName = productName, ProductDateBuy = productDateBuy, ProductDescription = productDescription,
-            ProductImageData = imageData, ProductPriceBuy = productPrice
+            ProductImageData = imageData, ProductPriceBuy = productPrice, IsSale = false
         };
-        ProductControl.AddProduct(newProduct);
+        products.Add(newProduct);
+        ProductControl.AddProduct(products);
     }
 
     private void ProductAvailabilityDataGrid_OnLoaded(object sender, RoutedEventArgs e)
     {
-        List<Product> product = ProductControl.ReceivingProduct();
-        ProductAvailabilityDataGrid.ItemsSource = product;
+        List<Product> products = ProductControl.ReceivingProduct();
+        List<Product> productIsNotSale = new List<Product>();
+        foreach (var product in products)
+        {
+            if (product.IsSale == false)
+            {
+                productIsNotSale.Add(product);
+            }
+        }
+        ProductAvailabilityDataGrid.ItemsSource = productIsNotSale;
     }
-
+    
     private void OpenCardProduct_click(object sender, RoutedEventArgs e)
     {
         var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
         if(selectedProduct != null)
         {
             List<Product> products = ProductControl.ReceivingProduct();
-            foreach(Product product in products)
+            foreach (Product product in products)
             {
-                if(product.ProductName == selectedProduct.ProductName && product.ProductPriceBuy == selectedProduct.ProductPriceBuy && product.ProductDateBuy == selectedProduct.ProductDateBuy) 
+                if (product.ProductName == selectedProduct.ProductName &&
+                    product.ProductPriceBuy == selectedProduct.ProductPriceBuy &&
+                    product.ProductDateBuy == selectedProduct.ProductDateBuy)
                 {
                     ProductCardWindow productCardWindow = new ProductCardWindow();
                     productCardWindow.FillingInData(product);
@@ -136,26 +143,31 @@ public partial class MainWindow : Window
             List<Product> products = ProductControl.ReceivingProduct();
             foreach (Product product in products)
             {
-                if (product.ProductName == selectedProduct.ProductName && product.ProductPriceBuy == selectedProduct.ProductPriceBuy && product.ProductDateBuy == selectedProduct.ProductDateBuy)
+                if (product.ProductName == selectedProduct.ProductName &&
+                    product.ProductPriceBuy == selectedProduct.ProductPriceBuy &&
+                    product.ProductDateBuy == selectedProduct.ProductDateBuy)
                 {
-                    SaleProduct newSaleProduct = new SaleProduct()
-                    {
-                        ProductName = product.ProductName,
-                        EmployeeName = loggedEmployee.EmployeeFullName,
-                        ProductDateBuy = product.ProductDateBuy,
-                        ProductPriceBuy = product.ProductPriceBuy,
-                        ProductDateSale = dateSale,
-                        ProductPriceSale = priceSale
-                    };
-                    ProductControl.AddProductSale(newSaleProduct);
+                    product.IsSale = true;
+                    product.ProductPriceSale = priceSale;
+                    product.EmployeeName = loggedEmployee.EmployeeFullName;
+                    product.ProductDateSale = dateSale;
                 }
+                ProductControl.AddProduct(products);
             }
         }
     }
 
     private void salesDataGrid_Loaded(object sender, RoutedEventArgs e)
     {
-        List<SaleProduct> SaleProduct = ProductControl.ReceivingSaleProduct();
-        salesDataGrid.ItemsSource = SaleProduct;
+        List<Product> products = ProductControl.ReceivingProduct();
+        List<Product> productIsSale = new List<Product>();
+        foreach (var product in products)
+        {
+            if (product.IsSale)
+            {
+                productIsSale.Add(product);
+            }
+        }
+        salesDataGrid.ItemsSource = productIsSale;
     }
 }

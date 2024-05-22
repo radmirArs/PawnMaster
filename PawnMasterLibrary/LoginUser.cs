@@ -3,7 +3,7 @@ using PawnMasterWPF;
 
 using PawnMasterLibrary;
 
-namespace PawnMasterWPF;
+namespace PawnMasterLibrary;
 
 public class LoginUser
 {

@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ModelForPawnMaster;
+using PawnMasterLibrary;
 
 namespace PawnMasterWPF
 {
@@ -65,5 +67,10 @@ namespace PawnMasterWPF
             UserDataGrid.ItemsSource = employees;
         }
 
+        private void AllProductDataGrid_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            List<Product> products = ProductControl.ReceivingProduct();
+            AllProductDataGrid.ItemsSource = products;
+        }
     }
 }

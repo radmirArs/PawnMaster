@@ -40,14 +40,12 @@ public static class EmployeeControl
         // Десериализация каждой строки в объект Employee
         foreach (string line in jsonLines)
         {
-            if (line != null || line != "{ }" || line != "{}")
+            if (!string.IsNullOrWhiteSpace(line))
             {
                 Employee employee = JsonSerializer.Deserialize<Employee>(line);
                 employees.Add(employee);
             }
-            
         }
         return employees;
     }
-
 }

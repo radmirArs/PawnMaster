@@ -14,5 +14,9 @@ namespace ModelForPawnMaster
         public string ProductDateBuy { get; set;}
         public string ProductPriceBuy { get; set; }
         public byte[] ProductImageData { get; set;}
+        public bool IsSale { get; set;}
+        public string ProductPriceSale { get; set; }
+        public string EmployeeName { get; set; }
+        public string ProductDateSale { get; set; }
     }
 }
