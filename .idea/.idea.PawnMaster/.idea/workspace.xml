@@ -7,20 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="747d6cea-ce18-4110-b533-e003aacad807" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/.name" beforeDir="false" />
+    <list default="true" id="747d6cea-ce18-4110-b533-e003aacad807" name="Changes" comment="переработка структуры проекта">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PawnMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ModelForPawnMaster/Employee.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ModelForPawnMaster/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelForPawnMaster/SaleProduct.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/EmployeeControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/EmployeeControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/LoginUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/LoginUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterLibrary/ProductControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterLibrary/ProductControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/AdminPanelWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Employee.json" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Employee.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Product.json" beforeDir="false" afterPath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/Product.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PawnMasterWPF/SerializedFiles/SaleProduct.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +85,17 @@
       <updated>1716271595590</updated>
       <workItem from="1716271605558" duration="36000" />
       <workItem from="1716271685515" duration="1486000" />
-      <workItem from="1716396201601" duration="8378000" />
+      <workItem from="1716396201601" duration="14970000" />
     </task>
+    <task id="LOCAL-00001" summary="переработка структуры проекта">
+      <option name="closed" value="true" />
+      <created>1716416384523</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716416384523</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,5 +104,7 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="переработка структуры проекта" />
+    <option name="LAST_COMMIT_MESSAGE" value="переработка структуры проекта" />
   </component>
 </project>
