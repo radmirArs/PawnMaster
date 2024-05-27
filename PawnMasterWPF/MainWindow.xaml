@@ -32,10 +32,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="233"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Name="NameUser" 
-                               FontSize="15" 
-                               Foreground="White" 
-                               FontFamily="Gill Sans Ultra Bold" Grid.Column="1" Grid.Row="2"/>
+                    <TextBlock Name="NameUser"  Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Label}}" 
+   TextWrapping="Wrap" Grid.Column="1" Grid.Row="2"/>
                     <TextBlock Text="Программа для ведения учета товара в ломбарде" 
                                FontSize="40" 
                                Foreground="White" 
