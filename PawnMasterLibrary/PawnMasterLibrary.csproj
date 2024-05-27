@@ -4,15 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>ArslanbekovLibrary</RootNamespace>
+        <RootNamespace>PawnMasterLibrary</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\ModelForPawnMaster\ModelForPawnMaster.csproj" />
     </ItemGroup>
 
 </Project>

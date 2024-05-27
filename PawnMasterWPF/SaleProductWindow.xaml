@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-        Title="ProductSaleWindow" Height="200" Width="200" Background="DimGray">
+        Title="ProductSaleWindow" Height="300" Width="500" Background="DimGray">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="36*"/>
-            <RowDefinition Height="43*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="60*"/>
             <RowDefinition Height="43*"/>
             <RowDefinition Height="62*"/>
         </Grid.RowDefinitions>
-        <TextBox Name="PriceSaleProductTextBox" Grid.Row="1" Height="20" Width="100" VerticalContentAlignment="Bottom" Margin="50,22,50,1" FontSize="10" />
-        <DatePicker Name="DateSaleProductTextBox" Grid.Row="2" Height="20" Width="100" VerticalContentAlignment="Bottom" Margin="50,22,50,1" FontSize="10" />
-        <Button Grid.Row="3" Height="20" Width="100" Content="Продано" Click="SaleProduct_click">   </Button>
+        <TextBox Name="PriceSaleProductTextBox" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Grid.Row="1" Width="266" Height="70"/>
+
+        <DatePicker Name="DateSaleProductTextBox" HorizontalAlignment="Center" Grid.Row="2" VerticalContentAlignment="Bottom"  FontSize="30" Width="266"/>
+        <Button Grid.Row="3" Content="Продано" FontSize="30" HorizontalAlignment="Center"  Click="SaleProduct_click" Margin="0,21,0,10" Width="266"/>
     </Grid>
 </Window>

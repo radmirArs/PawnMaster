@@ -15,7 +15,7 @@
             <Border BorderBrush="#FF6995C2" BorderThickness="0.5"></Border>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Height="603">
-            <Image Height="206" Width="216" Source="/Image/logo.png"
+            <Image Height="206" Width="216" Source="/logo.png"
  Margin="5,15,0,0">
             </Image>
             <DockPanel Margin="0,50,0,0" >

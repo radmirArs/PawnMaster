@@ -17,7 +17,18 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Name="ImageCard"></Image>
         <Label x:Name="NameProduct" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Top" Content="" FontSize="20" Width="371" Foreground="White" Grid.Column="0" Grid.Row="1"/>
-        <Label x:Name="DescriptionProduct" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Top" Content="" FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="0" Margin="15, 15, 15, 15"/>
+        <Label x:Name="DescriptionProduct" 
+       FontFamily="Gill Sans Ultra Bold" 
+       DockPanel.Dock="Top" 
+       FontSize="15" 
+       Foreground="White" 
+       Grid.Column="1" 
+       Grid.Row="0" 
+       Margin="15, 15, 15, 15">
+            <TextBlock Name="DescriptionProducText"  Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Label}}" 
+               TextWrapping="Wrap" Height="273" Width="268" />
+        </Label>
+
         <Button Content="Cancel" HorizontalAlignment="Center" Width="200" Height="40" FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row="1" Click="Cancel_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">

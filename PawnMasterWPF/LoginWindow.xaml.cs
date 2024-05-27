@@ -5,7 +5,9 @@ namespace PawnMasterWPF;
 
 public partial class LoginWindow : Window
 {
-    Employee LoggedEmloyee;
+    public delegate void LoginSuccessfulDelegate(object sender, Employee e);
+
+    public event LoginSuccessfulDelegate LoginSuccessful;
     public LoginWindow()
     {
         InitializeComponent();
@@ -22,29 +24,36 @@ public partial class LoginWindow : Window
     {
         string login = UserLoginTextBox.Text;
         string password = UserPasswordTextBox.Text;
-        if(login == "admin" && password == "admin")
+
+        if (login == "admin" && password == "admin")
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.LoggedAdmin();
             mainWindow.Show();
             Close();
         }
-
         else
         {
             LoginUser loginUser = new LoginUser(login, password);
-            LoggedEmloyee = loginUser.LoggedEmployee();
-            if (loginUser.Successfully)
+            Employee loggedImplyee = loginUser.Login();
+            if (loggedImplyee == null)
+            {
+                MessageBox.Show("Неверно введен логин или пароль");
+            }
+            else
             {
                 MainWindow mainWindow = new MainWindow();
-                mainWindow.LoggedUserAdd(LoggedEmloyee);
+                mainWindow.LoggedUserAdd(loggedImplyee);
                 mainWindow.Show();
                 Close();
             }
-
-            else
-                MessageBox.Show("Неверно введен логин или пароль");
+            
         }
-        
     }
+
+    protected virtual void OnLoginSuccessful(Employee e)
+    {
+        LoginSuccessful?.Invoke(this, e);
+    }
+
 }

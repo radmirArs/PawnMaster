@@ -1,10 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnMasterWPF", "PawnMasterWPF\PawnMasterWPF.csproj", "{F3D83E3F-317B-45CA-87B8-06C90B8F49A4}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawnMasterWPF", "PawnMasterWPF\PawnMasterWPF.csproj", "{F3D83E3F-317B-45CA-87B8-06C90B8F49A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnMasterLibrary", "PawnMasterLibrary\PawnMasterLibrary.csproj", "{99797F18-327A-402D-9CB5-AD5F8CD36B54}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelForPawnMaster", "ModelForPawnMaster\ModelForPawnMaster.csproj", "{139898A3-2AF7-4E8B-8F58-1235C2A6BF9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawnMasterLibrary", "PawnMasterLibrary\PawnMasterLibrary.csproj", "{99797F18-327A-402D-9CB5-AD5F8CD36B54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +21,8 @@ Global
 		{99797F18-327A-402D-9CB5-AD5F8CD36B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99797F18-327A-402D-9CB5-AD5F8CD36B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99797F18-327A-402D-9CB5-AD5F8CD36B54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{139898A3-2AF7-4E8B-8F58-1235C2A6BF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{139898A3-2AF7-4E8B-8F58-1235C2A6BF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{139898A3-2AF7-4E8B-8F58-1235C2A6BF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{139898A3-2AF7-4E8B-8F58-1235C2A6BF9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

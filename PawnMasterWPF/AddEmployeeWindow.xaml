@@ -15,31 +15,31 @@
             <Border BorderBrush="#FF6995C2" BorderThickness="0.5"></Border>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Height="603">
-            <Image Height="206" Width="216" Source="Image/logo.png"
+            <Image Height="206" Width="216" Source="/logo.png"
  Margin="5,0,0,10">
             </Image>
             <DockPanel >
                 <Label x:Name="LabNoteLogin" DockPanel.Dock="Top" Content="Введите данные сотрудника." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" Foreground="White"/>
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,15,0,0" >
-                <Label x:Name="FullNameEmployee" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="ФИО сотрудника:" FontSize="20" Width="300"  Foreground="White"/>
-                <TextBox x:Name="FullNameEmployeeTextBox" DockPanel.Dock="Left" Height="35" Width="280" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0"/>
+                <Label x:Name="FullNameEmployee" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="ФИО сотрудника:" FontSize="20" Width="338"  Foreground="White"/>
+                <TextBox x:Name="FullNameEmployeeTextBox" DockPanel.Dock="Left" Height="35" Width="363" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0"/>
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" Margin="5,15,0,0" Height="35" >
-                <Label x:Name="PhoneNumberEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Номер телефона сотрудника:" FontSize="20"  Width="300"  Foreground="White"/>
-                <TextBox x:Name="PhoneNumberEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="280" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
+                <Label x:Name="PhoneNumberEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Номер телефона сотрудника:" FontSize="20"  Width="338"  Foreground="White"/>
+                <TextBox x:Name="PhoneNumberEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="363" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" Margin="5,15,0,0" Height="35" >
-                <Label x:Name="EmailEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Номер почту сотрудника:" FontSize="20" Width="300" Foreground="White"/>
-                <TextBox x:Name="EmailEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="280" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
+                <Label x:Name="EmailEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Номер почту сотрудника:" FontSize="20" Width="338" Foreground="White"/>
+                <TextBox x:Name="EmailEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="363" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" Margin="5,15,0,0" Height="35" >
-                <Label x:Name="LoginEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Логин сотрудника:" FontSize="20" Width="300" Foreground="White"/>
-                <TextBox x:Name="LoginEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="280" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
+                <Label x:Name="LoginEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Логин сотрудника:" FontSize="20" Width="338" Foreground="White"/>
+                <TextBox x:Name="LoginEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="363" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" Margin="5,15,0,0" Height="35" >
-                <Label x:Name="PasswordEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Пароль сотрудника:" FontSize="20" Width="300" Foreground="White"/>
-                <TextBox x:Name="PasswordEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="280" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
+                <Label x:Name="PasswordEmployee"  FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Пароль сотрудника:" FontSize="20" Width="338" Foreground="White"/>
+                <TextBox x:Name="PasswordEmployeeTextBox"  DockPanel.Dock="Left" Height="35" Width="363" FontSize="20" BorderBrush="DimGray" Margin="5,0,0,0" />
             </DockPanel>
             <DockPanel Margin="0,25,40,0"/>
             <DockPanel HorizontalAlignment="Center" Margin="70,20,0,0">

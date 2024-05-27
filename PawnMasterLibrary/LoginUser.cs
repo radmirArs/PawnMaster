@@ -1,43 +1,26 @@
-using System.Text.Json;
-using PawnMasterWPF;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-using PawnMasterLibrary;
-
-namespace PawnMasterLibrary;
-
-public class LoginUser
+namespace PawnMasterLibrary
 {
-    private string _login;
-    private string _password;
-    public bool Successfully;
-    public LoginUser(string login, string password)
+    public class LoginUser
     {
-        _password = password;
-        _login = login;
-        Successfully = false;
-    }
+        private string _login;
+        private string _password;
 
-    public Employee LoggedEmployee()
-    {
-        List<Employee> employees = EmployeeControl.ReceivingEmployeeInfo();
-
-        foreach (var employee in employees)
+        public LoginUser(string login, string password)
         {
-            if (employee.EmployeePassword == _password && employee.EmployeeLogin == _login)
-            {
-                Console.WriteLine(employee.EmployeePassword);
-                Employee employeeLogged = new Employee()
-                {
-                    EmployeeFullName = employee.EmployeeFullName,
-                    EmployeePhoneNumber = employee.EmployeePhoneNumber,
-                    EmployeeEmail = employee.EmployeeEmail,
-                    EmployeePassword = _password,
-                    EmployeeLogin = _login
-                };
-                Successfully = true;
-                return employeeLogged;
-            }
+            _login = login;
+            _password = password;
         }
-        return null;
+
+        public Employee Login()
+        {
+            List<Employee> employees = ObjectControl.Deserialize<Employee>();
+            Employee employeeLogged = employees.FirstOrDefault(employee =>
+                employee.Password == _password && employee.Login == _login);
+            return employeeLogged;
+        }
     }
 }

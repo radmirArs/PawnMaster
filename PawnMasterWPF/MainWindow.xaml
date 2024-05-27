@@ -30,10 +30,10 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="233"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Grid.Row="2" Name="NameUser" 
+                    <TextBlock Grid.Row="2" Name="NameUser" 
                                    FontSize="20" 
                                    Foreground="White" 
-                                   FontFamily="Gill Sans Ultra Bold"></TextBlock>
+                                   FontFamily="Gill Sans Ultra Bold" Grid.ColumnSpan="2" Margin="1181,0,0,0"/>
                     <TextBlock Text="Программа для ведения учета товара в ломбарде" 
                                FontSize="40" 
                                Foreground="White" 
@@ -100,12 +100,12 @@
             <TabItem Header="Добавление товара">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="149*"/>
+                        <RowDefinition Height="149*"/>
+                        <RowDefinition Height="149*"/>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="115*"/>
+                        <RowDefinition Height="149*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="246"/>
@@ -129,9 +129,16 @@
                         <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="ProductPriceTextBox" DockPanel.Dock="Left" Height="70" Width="330" BorderBrush="DimGray"/>
                     </DockPanel>
 
-                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900"  Grid.Column="1" Grid.Row ="3"  Grid.ColumnSpan="2" >
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="163" Width="900"  Grid.Column="1" Grid.Row ="3" >
                         <Label x:Name="DescriptionLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="30" Width="371" Foreground="White"/>
-                        <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="DescriptionTextBox" DockPanel.Dock="Right" Height="115" Width="330" BorderBrush="DimGray" />
+                        <TextBox Style="{StaticResource CustomTextBoxStyle}" 
+         x:Name="DescriptionTextBox" 
+         FontSize="15" 
+         DockPanel.Dock="Right" 
+         Height="164" 
+         Width="330" 
+         BorderBrush="DimGray" 
+         TextWrapping="Wrap"/>
                     </DockPanel>
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="900"  Grid.Column="1" Grid.Row ="4"  >
@@ -154,7 +161,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Товары в наличие">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -171,7 +178,7 @@
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                            
+
                             <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
                             <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateBuy}" />
                         </DataGrid.Columns>
@@ -183,14 +190,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Открыть карточку твоара" Click="OpenCardProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1" >
+                    <Button Content="Открыть карточку товара" Click="OpenCardProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1" >
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    
+
                 </Grid>
             </TabItem>
         </TabControl>
