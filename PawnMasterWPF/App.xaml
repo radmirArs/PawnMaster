@@ -5,7 +5,7 @@
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
         <Style x:Key="CustomTabItemStyle" TargetType="TabItem">
-            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Template">

@@ -61,11 +61,11 @@ namespace PawnMasterWPF
                 try
                 {
                     reportService.GenerateCombinedReport(products, filePath);
-                    MessageBox.Show($"Отчет по товарам успешно сохранен в {filePath}");
+                    MessageBox.Show($"Отчет по товарам успешно сохранен");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при генерации отчета: {ex.Message}");
+                    MessageBox.Show($"Ошибка при генерации отчета:'\n'{ex.Message}");
                 }
             }
         }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-        Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920" WindowStartupLocation="CenterScreen">
+        WindowState="Maximized"
+        Title="HomeWindow" MinHeight="360" MinWidth="720" MaxHeight="720" MaxWidth="1280" WindowStartupLocation="CenterScreen">
 
 
     <Grid Background="SlateGray" >

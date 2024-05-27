@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-                     Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920" WindowStartupLocation="CenterScreen">
+                     Title="HomeWindow" Height="500" Width="1000" MinHeight="500" MinWidth="500" MaxHeight="720" MaxWidth="1280" WindowStartupLocation="CenterScreen">
 
     <Grid Background="SlateGray">
         <Grid.ColumnDefinitions>
@@ -63,16 +63,16 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    
+
                     <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0" Loaded="UserDataGrid_OnLoaded"
                             Style="{StaticResource DataGridStyle}" 
                             RowStyle="{StaticResource DataGridRowStyle}" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="250" Header="ФИО сотрудника" Binding="{Binding FullName}" />
-                            <DataGridTextColumn MinWidth="250" Header="Номер телефона" Binding="{Binding PhoneNumber}" />
-                            <DataGridTextColumn MinWidth="250" Header="Почта" Binding="{Binding Email}" />
-                            <DataGridTextColumn MinWidth="250" Header="Логин" Binding="{Binding Login}" />
-                            <DataGridTextColumn MinWidth="250" Header="Пароль" Binding="{Binding Password}" />
+                            <DataGridTextColumn MinWidth="150" Header="Номер телефона" Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn MinWidth="150" Header="Почта" Binding="{Binding Email}" />
+                            <DataGridTextColumn MinWidth="150" Header="Логин" Binding="{Binding Login}" />
+                            <DataGridTextColumn MinWidth="150" Header="Пароль" Binding="{Binding Password}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -81,9 +81,8 @@
             <TabItem Header="Все товары">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="88*"/>
-                        <RowDefinition Height="88*"/>
-                        <RowDefinition Height="827*"/>
+                        <RowDefinition Height="59*"/>
+                        <RowDefinition Height="64*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="707*"/>
@@ -101,11 +100,11 @@
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="200" Header="Название товара" Binding="{Binding Name}" />
-                            <DataGridTextColumn MinWidth="150" Header="Цена товара" Binding="{Binding PriceBuy}" />
-                            <DataGridTextColumn MinWidth="200" Header="Дата покупки" Binding="{Binding DateBuy}" />
-                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding DateSale}" />
-                            <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding DateSale}" />
-                            <DataGridTextColumn MinWidth="450" Header="Продавец" Binding="{Binding EmployeeName}" />
+                            <DataGridTextColumn MinWidth="130" Header="Цена товара" Binding="{Binding PriceBuy}" />
+                            <DataGridTextColumn MinWidth="130" Header="Дата покупки" Binding="{Binding DateBuy}" />
+                            <DataGridTextColumn MinWidth="130" Header="Дата продажи" Binding="{Binding DateSale}" />
+                            <DataGridTextColumn MinWidth="130" Header="Цена продажи" Binding="{Binding DateSale}" />
+                            <DataGridTextColumn MinWidth="250" Header="Продавец" Binding="{Binding EmployeeName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
