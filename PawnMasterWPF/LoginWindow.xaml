@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
                       Title="Login" Height="750" Width="1000" MinWidth="400" MinHeight="360" FontFamily="Microsoft Sans Serif" VerticalAlignment="Center" HorizontalAlignment="Center" WindowStartupLocation="CenterScreen">
-    <DockPanel Background="DimGray">
+    <DockPanel Background="SlateGray">
         <StackPanel DockPanel.Dock="Top">
             <DockPanel Margin="0,5,0,3">
                 <Label x:Name="POName" Content="PawnMaster" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="12" Foreground="White" Margin="0,0,0,2"/>
@@ -34,14 +34,14 @@
                 <Button x:Name="LoginButton" DockPanel.Dock="Left" Margin="0,0,5,0" Content="Login" Width="108" FontSize="30" Height="80" Foreground="Black" Background="#FFF7F7F7" Click="Login_Click" FontFamily="Bahnschrift Light">
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
                 <Button x:Name="CancelButton" DockPanel.Dock="Left" Margin="150,0,5,0" Content="Cancel" Width="176" FontSize="30" Height="80" Foreground="Black" Background="#FFF7F7F7" Click="Cancel_Click" FontFamily="Bahnschrift Light">
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>

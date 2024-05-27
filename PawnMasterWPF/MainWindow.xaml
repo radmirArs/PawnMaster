@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-        Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
+        Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920" WindowStartupLocation="CenterScreen">
 
 
-    <Grid Background="DimGray" >
+    <Grid Background="SlateGray" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="589*"/>
             <ColumnDefinition Width="105*"/>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <TabControl Name="firstPage" Grid.RowSpan="2" Style="{StaticResource CustomTabControlStyle}" Grid.ColumnSpan="3">
-            <TabItem Header="PawnMaster">
+            <TabItem Header="PawnMaster" Margin="0,0,-9,0">
                 <Grid Margin="15" Name ="FirstPageGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -67,7 +67,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Учет продаж">
+            <TabItem Header="Учет продаж" Margin="9,-1,-24,0">
                 <TabItem.Resources>
                     <Style x:Key="DataGridStyle" TargetType="DataGrid">
                         <Setter Property="Background" Value="SlateGray"/>
@@ -111,7 +111,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Добавление товара">
+            <TabItem Header="Добавление товара" Margin="22,-1,-36,0">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="149*"/>
@@ -134,7 +134,7 @@
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="1">
                         <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="20" Width="371" Foreground="White"/>
-                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="20"/>
+                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="340" FontSize="45"/>
                     </DockPanel>
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="2">
@@ -175,7 +175,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Товары в наличие">
+            <TabItem Header="Товары в наличие" Margin="37,-2,-43,2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="127*"/>

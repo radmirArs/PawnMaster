@@ -8,12 +8,12 @@ namespace PawnMasterWPF
 {
     public partial class AdminPanelWindow : Window
     {
-        private IProductService dataService;
+        private IProductService productService;
         private IReportService reportService;
         public AdminPanelWindow()
         {
             InitializeComponent();
-            dataService = new ProductService();
+            productService = new ProductService();
             reportService = new ReportService();
         }
 
@@ -47,12 +47,12 @@ namespace PawnMasterWPF
 
         private void DownloadProduct_Click(object sender, RoutedEventArgs e)
         {
-            var products = dataService.GetAllProducts();
+            var products = productService.GetAllProducts();
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Excel Files|*.xlsx",
                 Title = "Сохранить отчет",
-                FileName = "Отчет по товарам.xlsx"
+                FileName = "Отчет по продажам.xlsx"
             };
 
             if (saveFileDialog.ShowDialog() == true)
@@ -61,11 +61,11 @@ namespace PawnMasterWPF
                 try
                 {
                     reportService.GenerateCombinedReport(products, filePath);
-                    MessageBox.Show($"Отчет по товарам успешно сохранен");
+                    MessageBox.Show($"Отчет по товарам успешно сохранен в {filePath}");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при генерации отчета");
+                    MessageBox.Show($"Ошибка при генерации отчета: {ex.Message}");
                 }
             }
         }

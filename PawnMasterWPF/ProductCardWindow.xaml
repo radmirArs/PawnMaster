@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-        Title="ProductCardWindow" Height="450" Width="800" Background="DimGray">
+        Title="ProductCardWindow" Height="450" Width="800" Background="SlateGray" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="313*"/>

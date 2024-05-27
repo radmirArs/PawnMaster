@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-                     Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
+                     Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920" WindowStartupLocation="CenterScreen">
 
     <Grid Background="SlateGray">
         <Grid.ColumnDefinitions>
@@ -100,12 +100,12 @@
                        Style="{StaticResource DataGridStyle}" 
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.RowSpan="3">
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding Name}" />
-                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding PriceBuy}" />
-                            <DataGridTextColumn MinWidth="250" Header="Дата покупки" Binding="{Binding DateBuy}" />
+                            <DataGridTextColumn MinWidth="200" Header="Название товара" Binding="{Binding Name}" />
+                            <DataGridTextColumn MinWidth="150" Header="Цена товара" Binding="{Binding PriceBuy}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата покупки" Binding="{Binding DateBuy}" />
                             <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding DateSale}" />
                             <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding DateSale}" />
-                            <DataGridTextColumn MinWidth="350" Header="Продавец" Binding="{Binding EmployeeName}" />
+                            <DataGridTextColumn MinWidth="450" Header="Продавец" Binding="{Binding EmployeeName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
