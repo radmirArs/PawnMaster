@@ -46,9 +46,8 @@
                 </TabItem.Resources>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="88*"/>
-                        <RowDefinition Height="88*"/>
-                        <RowDefinition Height="827*"/>
+                        <RowDefinition Height="38*"/>
+                        <RowDefinition Height="116*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="707*"/>

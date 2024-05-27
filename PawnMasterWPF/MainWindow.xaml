@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="HomeWindow" MinHeight="360" MinWidth="720" MaxHeight="720" MaxWidth="1280" WindowStartupLocation="CenterScreen">
+        Title="HomeWindow" MinHeight="360" MinWidth="720" WindowStartupLocation="CenterScreen">
 
 
     <Grid Background="SlateGray" >
@@ -135,7 +135,7 @@
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="1">
                         <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="20" Width="371" Foreground="White"/>
-                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="340" FontSize="45"/>
+                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="340" FontSize="20"/>
                     </DockPanel>
 
                     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="2">
