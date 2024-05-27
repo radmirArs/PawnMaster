@@ -9,7 +9,6 @@ namespace PawnMasterLibrary
 {
     public class Product
     {
-        private static int _idCounter = 0;
 
         public Product()
         {

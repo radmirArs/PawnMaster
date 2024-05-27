@@ -14,6 +14,18 @@ public partial class LoginWindow : Window
         loginService.LoginSucceeded += LoginService_LoginSucceeded;
         loginService.LoginFailed += LoginService_LoginFailed;
     }
+    private void LoginService_LoginSucceeded(object sender, LoginEventArgs e)
+    {
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.LoggedUserAdd(e.Employee);
+        mainWindow.Show();
+        Close();
+    }
+
+    private void LoginService_LoginFailed(object sender, LoginEventArgs e)
+    {
+        MessageBox.Show("Неверно введен логин или пароль");
+    }
 
     private void Cancel_Click(object sender, RoutedEventArgs e)
     {
@@ -40,18 +52,7 @@ public partial class LoginWindow : Window
         }
     }
 
-    private void LoginService_LoginSucceeded(object sender, LoginEventArgs e)
-    {
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.LoggedUserAdd(e.Employee);
-        mainWindow.Show();
-        Close();
-    }
-
-    private void  LoginService_LoginFailed(object sender, LoginEventArgs e)
-    {
-        MessageBox.Show("Неверно введен логин или пароль");
-    }
+    
 
 
 

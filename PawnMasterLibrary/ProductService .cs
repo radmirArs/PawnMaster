@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PawnMasterLibrary
 {
-    public class DataService : IDataService
+    public class ProductService : IProductService
     {
         public event EventHandler<ProductEventArgs> ProductAdded;
         public event EventHandler<ProductEventArgs> ProductPurchased;
@@ -14,53 +14,39 @@ namespace PawnMasterLibrary
 
         public void AddProduct(Product product)
         {
-            if (!CheckRepeatEmpty(product))
-            {
-                ObjectControl.AddSerialize(product);
-                OnProductAdded(new ProductEventArgs { Product = product });
-            }
-            else
-            {
-                throw new InvalidOperationException("Повторяются названия продукта и дата покупки");
-            }
+            ObjectControl.AddSerialize(product);
+            OnProductAdded(new ProductEventArgs { Product = product });
         }
 
         public void PurchaseProduct(Product product, string dateSale, string priceSale, Employee employee)
         {
             var products = ObjectControl.Deserialize<Product>();
-            var foundProduct = products.FirstOrDefault(p => p.ProductName == product.ProductName && p.ProductDateBuy == product.ProductDateBuy);
+            var foundProduct = products.FirstOrDefault(p => p.Name == product.Name && p.DateBuy == product.DateBuy);
             if (foundProduct != null)
             {
                 foundProduct.IsSale = true;
-                foundProduct.ProductPriceSale = priceSale;
+                foundProduct.PriceSale = priceSale;
                 foundProduct.EmployeeName = employee.FullName;
-                foundProduct.ProductDateSale = dateSale;
+                foundProduct.DateSale = dateSale;
                 ObjectControl.ListSerialize(products);
                 OnProductPurchased(new ProductEventArgs { Product = foundProduct });
             }
         }
 
-        public Product FindProduct(Product product)
+        public void FindProductAndOpenCard(Product product)
         {
-            return ProductControl.FindProduct(product);
+            string filePath = ObjectControl.SerializedFilesPath(typeof(Product).Name);
+            List<Product> products = ObjectControl.Deserialize<Product>();
+            Product findProduct = products.FirstOrDefault(productFind =>
+                productFind.Name == product.Name &&
+                productFind.Description == product.Description);
+            OnProductCardOpened(new ProductEventArgs { Product = findProduct });
         }
 
-        public List<Product> GetAvailableProducts()
+        public List<Product> GetAllProducts()
         {
             var products = ObjectControl.Deserialize<Product>();
-            return products.Where(p => !p.IsSale).ToList();
-        }
-
-        public List<Product> GetSoldProducts()
-        {
-            var products = ObjectControl.Deserialize<Product>();
-            return products.Where(p => p.IsSale).ToList();
-        }
-
-        private bool CheckRepeatEmpty(Product product)
-        {
-            var products = ObjectControl.Deserialize<Product>();
-            return products.Any(p => p.ProductName == product.ProductName && p.ProductDateBuy == product.ProductDateBuy);
+            return products;
         }
 
         protected virtual void OnProductAdded(ProductEventArgs e)
@@ -77,5 +63,6 @@ namespace PawnMasterLibrary
         {
             ProductCardOpened?.Invoke(this, e);
         }
+
     }
 }

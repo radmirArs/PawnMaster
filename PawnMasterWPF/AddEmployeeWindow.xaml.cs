@@ -43,11 +43,6 @@ public partial class AddEmployeeWindow : Window
         }
     }
 
-    void ChechRepeat()
-    {
-
-    }
-
     private void Cancel_Click(object sender, RoutedEventArgs e)
     {
         AdminPanelWindow adminPanelWindow = new AdminPanelWindow();

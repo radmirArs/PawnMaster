@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PawnMasterLibrary
 {
-    public interface IDataService
+    public interface IProductService
     {
         event EventHandler<ProductEventArgs> ProductAdded;
         event EventHandler<ProductEventArgs> ProductPurchased;
@@ -14,9 +14,8 @@ namespace PawnMasterLibrary
 
         void AddProduct(Product product);
         void PurchaseProduct(Product product, string dateSale, string priceSale, Employee employee);
-        Product FindProduct(Product product);
-        List<Product> GetAvailableProducts();
-        List<Product> GetSoldProducts();
+        void FindProductAndOpenCard(Product product);
+        List<Product> GetAllProducts();
     }
 
     public class ProductEventArgs : EventArgs

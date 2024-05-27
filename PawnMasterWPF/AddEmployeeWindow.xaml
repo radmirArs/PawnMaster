@@ -43,19 +43,19 @@
             </DockPanel>
             <DockPanel Margin="0,25,40,0"/>
             <DockPanel HorizontalAlignment="Center" Margin="70,20,0,0">
-                <Button x:Name="AddButton" DockPanel.Dock="Left" Margin="0,0,5,0" Content="Add Employee" Width="200" 
-                        FontSize="30" Height="80" Foreground="Black" Background="#FFF7F7F7" Click="AddEmployee_Click" FontFamily="Bahnschrift Light">
+                <Button x:Name="AddButton" DockPanel.Dock="Left" Margin="0,-10,5,0" Content="Add Employee" Width="200" 
+                        FontSize="30" Height="50" Foreground="Black" Background="#FFF7F7F7" Click="AddEmployee_Click" FontFamily="Bahnschrift Light">
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="CancelButton" DockPanel.Dock="Left" Margin="150,0,5,0" Content="Cancel" Width="176" 
-                        FontSize="30" Height="80" Foreground="Black" Background="#FFF7F7F7" Click="Cancel_Click" FontFamily="Bahnschrift Light">
+                <Button x:Name="CancelButton" DockPanel.Dock="Left" Margin="150,-10,5,0" Content="Cancel" Width="200" 
+                        FontSize="30" Height="50" Foreground="Black" Background="#FFF7F7F7" Click="Cancel_Click" FontFamily="Bahnschrift Light">
                     <Button.Resources>
                         <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="3"/>
+                            <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>

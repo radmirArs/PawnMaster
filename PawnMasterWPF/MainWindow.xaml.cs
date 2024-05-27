@@ -13,24 +13,32 @@ public partial class MainWindow : Window
     string _role;
     byte[] _dataImage;
     private Employee loggedEmployee;
-    private IDataService dataService;
+    private IProductService productService;
 
     public MainWindow()
     {
         InitializeComponent();
-        dataService = new DataService();
-        dataService.ProductAdded += DataService_ProductAdded;
-        dataService.ProductPurchased += DataService_ProductPurchased;
+        productService = new ProductService();
+        productService.ProductAdded += ProductAddedService;
+        productService.ProductPurchased += ProductPurchasedService;
+        productService.ProductCardOpened += ProductOpenCardService;
     }
 
-    private void DataService_ProductAdded(object sender, ProductEventArgs e)
+    private void ProductAddedService(object sender, ProductEventArgs e)
     {
         MessageBox.Show("Продукт успешно добавлен");
     }
 
-    private void DataService_ProductPurchased(object sender, ProductEventArgs e)
+    private void ProductPurchasedService(object sender, ProductEventArgs e)
     {
         MessageBox.Show("Продукт успешно продан");
+    }
+
+    void ProductOpenCardService(object sender, ProductEventArgs e)
+    {
+        ProductCardWindow productCardWindow = new ProductCardWindow();
+        productCardWindow.FillingInData(e.Product);
+        productCardWindow.ShowDialog();
     }
 
     private void ImageAdd_Click(object sender, RoutedEventArgs e)
@@ -130,16 +138,16 @@ public partial class MainWindow : Window
         {
             var newProduct = new Product()
             {
-                ProductName = productName,
-                ProductDateBuy = productDateBuy,
-                ProductDescription = productDescription,
-                ProductImageData = dataImage,
-                ProductPriceBuy = productPrice,
+                Name = productName,
+                DateBuy = productDateBuy,
+                Description = productDescription,
+                ImageData = dataImage,
+                PriceBuy = productPrice,
                 IsSale = false
             };
             try
             {
-                dataService.AddProduct(newProduct);
+                productService.AddProduct(newProduct);
             }
             catch (InvalidOperationException ex)
             {
@@ -153,19 +161,19 @@ public partial class MainWindow : Window
         string errorMessage = "";
 
         if (string.IsNullOrWhiteSpace(productName))
-            errorMessage += "Название продукта не может быть пустым.\n";
+            errorMessage += "Название товара не может быть пустым.\n";
 
         if (string.IsNullOrWhiteSpace(productDateBuy))
-            errorMessage += "Дата покупки продукта не может быть пустой.\n";
+            errorMessage += "Дата покупки товара не может быть пустой.\n";
 
         if (string.IsNullOrWhiteSpace(productPrice))
-            errorMessage += "Цена продукта не может быть пустой.\n";
+            errorMessage += "Цена товара не может быть пустой.\n";
 
         if (string.IsNullOrWhiteSpace(productDescription))
-            errorMessage += "Описание продукта не может быть пустым.\n";
+            errorMessage += "Описание товара не может быть пустым.\n";
 
         if (dataImage == null || dataImage.Length == 0)
-            errorMessage += "Не добавлено фото продукта.\n";
+            errorMessage += "Не добавлено фото товара.\n";
 
         if (!string.IsNullOrWhiteSpace(errorMessage))
         {
@@ -177,38 +185,41 @@ public partial class MainWindow : Window
 
     private void ProductAvailabilityDataGrid_OnLoaded(object sender, RoutedEventArgs e)
     {
-        var products = dataService.GetAvailableProducts();
-        ProductAvailabilityDataGrid.ItemsSource = products;
+        var products = productService.GetAllProducts();
+        var availabilityProducts = products.Where(p => !p.IsSale).ToList();
+        ProductAvailabilityDataGrid.ItemsSource = availabilityProducts;
     }
 
     private void OpenCardProduct_click(object sender, RoutedEventArgs e)
     {
         var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
-        var findProduct = dataService.FindProduct(selectedProduct);
-        if (findProduct != null)
-        {
-            ProductCardWindow productCardWindow = new ProductCardWindow();
-            productCardWindow.FillingInData(findProduct);
-            productCardWindow.ShowDialog();
-        }
+        if(selectedProduct != null)
+            productService.FindProductAndOpenCard(selectedProduct);
     }
 
     private void PurchaseProduct_click(object sender, RoutedEventArgs e)
     {
-        var saleProductWindow = new SaleProductWindow();
-        saleProductWindow.ShowDialog();
-        string dateSale = saleProductWindow.Date;
-        string priceSale = saleProductWindow.Price;
-        var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
-        if (selectedProduct != null)
+        if (_role == "U")
         {
-            dataService.PurchaseProduct(selectedProduct, dateSale, priceSale, loggedEmployee);
+            var saleProductWindow = new SaleProductWindow();
+            saleProductWindow.ShowDialog();
+            string dateSale = saleProductWindow.Date;
+            string priceSale = saleProductWindow.Price;
+            var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
+            if (selectedProduct != null)
+            {
+                productService.PurchaseProduct(selectedProduct, dateSale, priceSale, loggedEmployee);
+            }
         }
+        else
+            MessageBox.Show("Админ не может продавать товар");
+        
     }
 
     private void salesDataGrid_Loaded(object sender, RoutedEventArgs e)
     {
-        var products = dataService.GetSoldProducts();
-        salesDataGrid.ItemsSource = products;
+        var products = productService.GetAllProducts();
+        var salesProducts = products.Where(p => p.IsSale).ToList();
+        salesDataGrid.ItemsSource = salesProducts;
     }
 }

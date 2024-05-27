@@ -7,7 +7,7 @@
         mc:Ignorable="d"
                      Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
 
-    <Grid Background="DimGray">
+    <Grid Background="SlateGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="589*"/>
             <ColumnDefinition Width="105*"/>
@@ -19,26 +19,25 @@
         </Grid.RowDefinitions>
 
         <TabControl Name="firstPage" Grid.RowSpan="2" Style="{StaticResource CustomTabControlStyle}" Grid.ColumnSpan="3">
-
             <TabItem Header="Сотрудники">
                 <TabItem.Resources>
                     <Style x:Key="DataGridStyle" TargetType="DataGrid">
-                        <Setter Property="Background" Value="DimGray"/>
-                        <Setter Property="RowBackground" Value="DimGray"/>
-                        <Setter Property="AlternatingRowBackground" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
+                        <Setter Property="RowBackground" Value="SlateGray"/>
+                        <Setter Property="AlternatingRowBackground" Value="SlateGray"/>
                         <Setter Property="GridLinesVisibility" Value="None"/>
                         <Setter Property="IsReadOnly" Value="True"/>
                         <Setter Property="CanUserResizeColumns" Value="False"/>
                         <Setter Property="CanUserReorderColumns" Value="False"/>
                     </Style>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
                     </Style>
                     <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
                         <Setter Property="Margin" Value="5"/>
-                        <Setter Property="BorderBrush" Value="DimGray"/>
+                        <Setter Property="BorderBrush" Value="SlateGray"/>
                         <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
                     </Style>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderBrush" Value="LightGray"/>
@@ -55,7 +54,7 @@
                         <ColumnDefinition Width="707*"/>
                         <ColumnDefinition Width="82*"/>
                     </Grid.ColumnDefinitions>
-                    
+
 
                     <Button Content="Добавить" Click="AddUser_Click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="144"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1">
                         <Button.Resources>
@@ -64,16 +63,16 @@
                             </Style>
                         </Button.Resources>
                     </Button>
- 
-                    <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Loaded="UserDataGrid_OnLoaded" 
-                  Style="{StaticResource DataGridStyle}" 
-                  RowStyle="{StaticResource DataGridRowStyle}" Grid.Row="0" Grid.RowSpan="3">
+                    
+                    <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0" Loaded="UserDataGrid_OnLoaded"
+                            Style="{StaticResource DataGridStyle}" 
+                            RowStyle="{StaticResource DataGridRowStyle}" Grid.RowSpan="3">
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="250" Header="ФИО сотрудника" Binding="{Binding EmployeeFullName}" />
-                            <DataGridTextColumn MinWidth="250" Header="Номер телефона" Binding="{Binding EmployeePhoneNumber}" />
-                            <DataGridTextColumn MinWidth="250" Header="Почта" Binding="{Binding EmployeeEmail}" />
-                            <DataGridTextColumn MinWidth="250" Header="Логин" Binding="{Binding EmployeeLogin}" />
-                            <DataGridTextColumn MinWidth="250" Header="Пароль" Binding="{Binding EmployeePassword}" />
+                            <DataGridTextColumn MinWidth="250" Header="ФИО сотрудника" Binding="{Binding FullName}" />
+                            <DataGridTextColumn MinWidth="250" Header="Номер телефона" Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn MinWidth="250" Header="Почта" Binding="{Binding Email}" />
+                            <DataGridTextColumn MinWidth="250" Header="Логин" Binding="{Binding Login}" />
+                            <DataGridTextColumn MinWidth="250" Header="Пароль" Binding="{Binding Password}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -82,27 +81,34 @@
             <TabItem Header="Все товары">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="127*"/>
-                        <RowDefinition Height="127*"/>
-                        <RowDefinition Height="650*"/>
+                        <RowDefinition Height="88*"/>
+                        <RowDefinition Height="88*"/>
+                        <RowDefinition Height="827*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1073*"/>
-                        <ColumnDefinition Width="505*"/>
+                        <ColumnDefinition Width="707*"/>
+                        <ColumnDefinition Width="82*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <DataGrid x:Name="AllProductDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0" Loaded="AllProductDataGrid_OnLoaded"
+                    <Button Content="Скачать" Click="DownloadProduct_Click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="144"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <DataGrid x:Name="AllProductDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Loaded="AllProductDataGrid_OnLoaded"
                        Style="{StaticResource DataGridStyle}" 
-                       RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                       RowStyle="{StaticResource DataGridRowStyle}" Grid.RowSpan="3">
                         <DataGrid.Columns>
-                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
-                            <DataGridTextColumn MinWidth="100" Header="Индекс" Binding="{Binding ID}" />
-                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
-                            <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateSale}" />
-                            <DataGridTextColumn MinWidth="200" Header="Статус товара" Binding="{Binding IsSale}" />
+                            <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding Name}" />
+                            <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding PriceBuy}" />
+                            <DataGridTextColumn MinWidth="250" Header="Дата покупки" Binding="{Binding DateBuy}" />
+                            <DataGridTextColumn MinWidth="200" Header="Дата продажи" Binding="{Binding DateSale}" />
+                            <DataGridTextColumn MinWidth="200" Header="Цена продажи" Binding="{Binding DateSale}" />
+                            <DataGridTextColumn MinWidth="350" Header="Продавец" Binding="{Binding EmployeeName}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    
+
                 </Grid>
             </TabItem>
         </TabControl>
