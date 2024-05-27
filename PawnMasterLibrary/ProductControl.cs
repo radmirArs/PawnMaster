@@ -7,8 +7,8 @@
             string filePath = ObjectControl.SerializedFilesPath(typeof(Product).Name);
             List<Product> products = ObjectControl.Deserialize<Product>();
             Product findProduct = products.FirstOrDefault(product =>
-                product.ProductName == productDesired.ProductName &&
-                product.ProductDescription == productDesired.ProductDescription);
+                product.Name == productDesired.Name &&
+                product.Description == productDesired.Description);
             return findProduct;
         }
     }

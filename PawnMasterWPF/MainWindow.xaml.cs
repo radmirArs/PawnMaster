@@ -3,6 +3,8 @@ using PawnMasterLibrary;
 using Microsoft.Win32;
 using System.IO;
 using System.Data;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PawnMasterWPF;
 
@@ -10,12 +12,25 @@ public partial class MainWindow : Window
 {
     string _role;
     byte[] _dataImage;
-
     private Employee loggedEmployee;
+    private IDataService dataService;
 
     public MainWindow()
     {
         InitializeComponent();
+        dataService = new DataService();
+        dataService.ProductAdded += DataService_ProductAdded;
+        dataService.ProductPurchased += DataService_ProductPurchased;
+    }
+
+    private void DataService_ProductAdded(object sender, ProductEventArgs e)
+    {
+        MessageBox.Show("Продукт успешно добавлен");
+    }
+
+    private void DataService_ProductPurchased(object sender, ProductEventArgs e)
+    {
+        MessageBox.Show("Продукт успешно продан");
     }
 
     private void ImageAdd_Click(object sender, RoutedEventArgs e)
@@ -38,15 +53,13 @@ public partial class MainWindow : Window
     private void Login_Click(object sender, RoutedEventArgs e)
     {
         LoginWindow loginWindow = new LoginWindow();
-
         loginWindow.Show();
-
         Close();
     }
 
     private void AdminPanel_Click(object sender, RoutedEventArgs e)
     {
-        if(_role == "A")
+        if (_role == "A")
         {
             AdminPanelWindow adminPanelWindow = new AdminPanelWindow();
             adminPanelWindow.Show();
@@ -69,6 +82,40 @@ public partial class MainWindow : Window
     {
         NameUser.Text = "Админ";
         _role = "A";
+        AddAdminPanelButton();
+    }
+
+    private void AddAdminPanelButton()
+    {
+        bool conditionMet = true;
+
+        if (conditionMet)
+        {
+            Button adminPanelButton = new Button
+            {
+                Height = 60,
+                Width = 230,
+                Content = "AdminPanel",
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                FontSize = 40,
+                Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("SlateGray")),
+                Foreground = new SolidColorBrush(Colors.White),
+            };
+
+            adminPanelButton.Click += AdminPanel_Click;
+
+            var borderStyle = new Style(typeof(Border));
+            borderStyle.Setters.Add(new Setter(Border.CornerRadiusProperty, new CornerRadius(10)));
+            borderStyle.Setters.Add(new Setter(Border.BorderBrushProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("SlateGray"))));
+            borderStyle.Setters.Add(new Setter(Border.BorderThicknessProperty, new Thickness(5)));
+
+            adminPanelButton.Resources.Add(typeof(Border), borderStyle);
+
+            FirstPageGrid.Children.Add(adminPanelButton);
+            Grid.SetColumn(adminPanelButton, 0);
+            Grid.SetRow(adminPanelButton, 2);
+        }
     }
 
     private void ProductAdd_Click(object sender, RoutedEventArgs e)
@@ -90,26 +137,15 @@ public partial class MainWindow : Window
                 ProductPriceBuy = productPrice,
                 IsSale = false
             };
-            if (!CheckRepeatEmpty(newProduct))
-                ObjectControl.AddSerialize(newProduct);
-            else
-                MessageBox.Show("Повторяются названия продукта и дата покупки");
-        }
-    }
-
-    public bool CheckRepeatEmpty(Product product)
-    {
-        List<Product> products = ObjectControl.Deserialize<Product>();
-        foreach(var productInList in products)
-        {
-            if(product.ProductName == productInList.ProductName && product.ProductDateBuy == productInList.ProductDateBuy)
+            try
             {
-                return true;
+                dataService.AddProduct(newProduct);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-        return false;
-
-
     }
 
     private bool CheckForNullAndSpaces(string productName, string productDateBuy, string productPrice, string productDescription, byte[] dataImage)
@@ -128,75 +164,51 @@ public partial class MainWindow : Window
         if (string.IsNullOrWhiteSpace(productDescription))
             errorMessage += "Описание продукта не может быть пустым.\n";
 
-        if (string.IsNullOrWhiteSpace(Convert.ToString(dataImage)))
+        if (dataImage == null || dataImage.Length == 0)
             errorMessage += "Не добавлено фото продукта.\n";
 
-        if (errorMessage != "")
+        if (!string.IsNullOrWhiteSpace(errorMessage))
         {
             MessageBox.Show(errorMessage);
             return false;
         }
-        else
-            return true;
+        return true;
     }
 
     private void ProductAvailabilityDataGrid_OnLoaded(object sender, RoutedEventArgs e)
     {
-        List<Product> products = ObjectControl.Deserialize<Product>();
-        List<Product> productIsNotSale = new List<Product>();
-        foreach (var product in products)
-        {
-            if (product.IsSale == false)
-                productIsNotSale.Add(product);
-        }
-        ProductAvailabilityDataGrid.ItemsSource = productIsNotSale;
+        var products = dataService.GetAvailableProducts();
+        ProductAvailabilityDataGrid.ItemsSource = products;
     }
-    
+
     private void OpenCardProduct_click(object sender, RoutedEventArgs e)
     {
         var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
-        Product findProuct = ProductControl.FindProduct(selectedProduct);
-        if (findProuct != null)
+        var findProduct = dataService.FindProduct(selectedProduct);
+        if (findProduct != null)
         {
             ProductCardWindow productCardWindow = new ProductCardWindow();
-            productCardWindow.FillingInData(findProuct);
+            productCardWindow.FillingInData(findProduct);
             productCardWindow.ShowDialog();
         }
     }
 
     private void PurchaseProduct_click(object sender, RoutedEventArgs e)
     {
-        PurchaseProduct();
-    }
-
-    void PurchaseProduct()
-    {
-        SaleProductWindow saleProductWindow = new SaleProductWindow();
+        var saleProductWindow = new SaleProductWindow();
         saleProductWindow.ShowDialog();
         string dateSale = saleProductWindow.Date;
         string priceSale = saleProductWindow.Price;
         var selectedProduct = (Product)ProductAvailabilityDataGrid.SelectedItem;
         if (selectedProduct != null)
         {
-            List<Product> products = ObjectControl.Deserialize<Product>();
-            Product foundProduct = products.FirstOrDefault(product => product.ProductName == selectedProduct.ProductName && product.ProductDateBuy == selectedProduct.ProductDateBuy);
-            foundProduct.IsSale = true;
-            foundProduct.ProductPriceSale = priceSale;
-            foundProduct.EmployeeName = loggedEmployee.FullName;
-            foundProduct.ProductDateSale = dateSale;
-            ObjectControl.ListSerialize(products);
+            dataService.PurchaseProduct(selectedProduct, dateSale, priceSale, loggedEmployee);
         }
     }
 
     private void salesDataGrid_Loaded(object sender, RoutedEventArgs e)
     {
-        List<Product> products = ObjectControl.Deserialize<Product>();
-        List<Product> productIsSale = new List<Product>();
-        foreach (var product in products)
-        {
-            if (product.IsSale)
-                productIsSale.Add(product);
-        }
-        salesDataGrid.ItemsSource = productIsSale;
+        var products = dataService.GetSoldProducts();
+        salesDataGrid.ItemsSource = products;
     }
 }

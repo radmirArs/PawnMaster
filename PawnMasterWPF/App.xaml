@@ -4,105 +4,111 @@
              xmlns:local="clr-namespace:PawnMasterWPF"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-    <Style x:Key="CustomTabItemStyle" TargetType="TabItem">
-        <Setter Property="FontSize" Value="25"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Grid>
-                        <Border Name="Border" 
-                            Background="DimGray" 
-                            BorderBrush="Gray" 
+        <Style x:Key="CustomTabItemStyle" TargetType="TabItem">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid>
+                            <Border Name="Border" 
+                            Background="SlateGray" 
+                            BorderBrush="DarkGray" 
                             BorderThickness="1"
-                            CornerRadius="10,10,0,0" 
-                            Padding="10,5">
-                            <ContentPresenter x:Name="ContentSite"
+                            CornerRadius="10,10,0,0">
+                                <ContentPresenter x:Name="ContentSite"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Center"
                                           ContentSource="Header"/>
-                        </Border>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="DarkGray"/>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="Black"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="DimGray"/>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="Gray"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="Gray"/>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
-                            <Setter Property="Foreground" Value="LightGray"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="DarkSlateGray"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="Gray"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
+                                <Setter Property="Foreground" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Style x:Key="CustomTabControlStyle" TargetType="TabControl">
-        <Setter Property="Background" Value="DimGray"/>
-        <Setter Property="BorderBrush" Value="LightGray"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource CustomTabItemStyle}"/>
-    </Style>
+        <Style x:Key="CustomTabControlStyle" TargetType="TabControl">
+            <Setter Property="Background" Value="SlateGray"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource CustomTabItemStyle}"/>
+        </Style>
 
-    <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
-        <Setter Property="FontSize" Value="30"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border Name="Border"
+        <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Name="Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
-                            <Setter TargetName="Border" Property="BorderThickness" Value="2"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="LightGray"/>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
-                            <Setter Property="Foreground" Value="Gray"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="DataGridStyle" TargetType="DataGrid">
-        <Setter Property="Background" Value="DimGray"/>
-        <Setter Property="RowBackground" Value="DimGray"/>
-        <Setter Property="AlternatingRowBackground" Value="DimGray"/>
-        <Setter Property="GridLinesVisibility" Value="None"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="CanUserResizeColumns" Value="False"/>
-        <Setter Property="CanUserReorderColumns" Value="False"/>
-    </Style>
-    <Style TargetType="DataGridColumnHeader">
-        <Setter Property="Background" Value="DimGray"/>
-    </Style>
-    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
-        <Setter Property="BorderBrush" Value="DimGray"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="DimGray"/>
-    </Style>
-    <Style TargetType="DataGridCell">
-        <Setter Property="BorderBrush" Value="LightGray"/>
-        <Setter Property="BorderThickness" Value="0,0,1,0"/>
-    </Style>
-</Application.Resources>
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
+                                <Setter TargetName="Border" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray"/>
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="Background" Value="SlateGray"/>
+            <Setter Property="RowBackground" Value="SlateGray"/>
+            <Setter Property="AlternatingRowBackground" Value="SlateGray"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="SlateGray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+            <Setter Property="BorderBrush" Value="SlateGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="SlateGray"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0,0,1,0"/>
+        </Style>
+
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+    </Application.Resources>
 </Application>

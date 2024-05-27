@@ -9,15 +9,24 @@ namespace PawnMasterLibrary
 {
     public class Product
     {
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
-        public string ProductDateBuy { get; set; }
-        public string ProductPriceBuy { get; set; }
-        public byte[] ProductImageData { get; set; }
+        private static int _idCounter = 0;
+
+        public Product()
+        {
+            ID = Guid.NewGuid();
+        }
+
+        public Guid ID { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string DateBuy { get; set; }
+        public string PriceBuy { get; set; }
+        public byte[] ImageData { get; set; }
         public bool IsSale { get; set; } = false;
-        public string ProductPriceSale { get; set; }
+        public string PriceSale { get; set; }
         public string EmployeeName { get; set; }
-        public string ProductDateSale { get; set; }
+        public string DateSale { get; set; }
+
     }
 }
 

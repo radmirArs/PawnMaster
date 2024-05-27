@@ -96,6 +96,7 @@
                        RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
+                            <DataGridTextColumn MinWidth="100" Header="Индекс" Binding="{Binding ID}" />
                             <DataGridTextColumn MinWidth="250" Header="Цена товара" Binding="{Binding ProductPriceBuy}" />
                             <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateSale}" />
                             <DataGridTextColumn MinWidth="200" Header="Статус товара" Binding="{Binding IsSale}" />

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnMasterWPF"
         mc:Ignorable="d"
-              Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
+        Title="HomeWindow" Height="1000" Width="1600" MinHeight="500" MinWidth="500" MaxHeight="1080" MaxWidth="1920">
 
-    <Grid Background="DimGray">
+
+    <Grid Background="DimGray" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="589*"/>
             <ColumnDefinition Width="105*"/>
@@ -20,7 +21,7 @@
 
         <TabControl Name="firstPage" Grid.RowSpan="2" Style="{StaticResource CustomTabControlStyle}" Grid.ColumnSpan="3">
             <TabItem Header="PawnMaster">
-                <Grid Margin="15">
+                <Grid Margin="15" Name ="FirstPageGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="139*"/>
@@ -28,12 +29,12 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="233"></ColumnDefinition>
+                        <ColumnDefinition Width="233"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="2" Name="NameUser" 
-                                   FontSize="20" 
-                                   Foreground="White" 
-                                   FontFamily="Gill Sans Ultra Bold" Grid.ColumnSpan="2" Margin="1181,0,0,0"/>
+                    <TextBlock Name="NameUser" 
+                               FontSize="15" 
+                               Foreground="White" 
+                               FontFamily="Gill Sans Ultra Bold" Grid.Column="1" Grid.Row="2"/>
                     <TextBlock Text="Программа для ведения учета товара в ломбарде" 
                                FontSize="40" 
                                Foreground="White" 
@@ -42,7 +43,18 @@
                                FontFamily="Gill Sans Ultra Bold" 
                                FontStyle="Italic" Width="1050" />
 
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
+
+
+                    <Button Height="60" Width="230" Grid.Row="2" Content="Login" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="40" Background="SlateGray" Foreground="White" Click="Login_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="SlateGray"/>
+                                <Setter Property="BorderThickness" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Grid.RowSpan="1">
                         <TextBlock TextWrapping="Wrap" 
                                    FontSize="30" 
                                    Foreground="White" 
@@ -58,22 +70,24 @@
             <TabItem Header="Учет продаж">
                 <TabItem.Resources>
                     <Style x:Key="DataGridStyle" TargetType="DataGrid">
-                        <Setter Property="Background" Value="DimGray"/>
-                        <Setter Property="RowBackground" Value="DimGray"/>
-                        <Setter Property="AlternatingRowBackground" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
+                        <Setter Property="RowBackground" Value="SlateGray"/>
+                        <Setter Property="AlternatingRowBackground" Value="SlateGray"/>
                         <Setter Property="GridLinesVisibility" Value="None"/>
                         <Setter Property="IsReadOnly" Value="True"/>
                         <Setter Property="CanUserResizeColumns" Value="False"/>
                         <Setter Property="CanUserReorderColumns" Value="False"/>
                     </Style>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="18"/>
                     </Style>
                     <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
                         <Setter Property="Margin" Value="5"/>
-                        <Setter Property="BorderBrush" Value="DimGray"/>
+                        <Setter Property="BorderBrush" Value="SlateGray"/>
                         <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Background" Value="DimGray"/>
+                        <Setter Property="Background" Value="SlateGray"/>
                     </Style>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderBrush" Value="LightGray"/>
@@ -82,8 +96,8 @@
                 </TabItem.Resources>
                 <Grid>
                     <DataGrid x:Name="salesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  Loaded="salesDataGrid_Loaded"
-                  Style="{StaticResource DataGridStyle}" 
-                  RowStyle="{StaticResource DataGridRowStyle}">
+                              Style="{StaticResource DataGridStyle}" 
+                              RowStyle="{StaticResource DataGridRowStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
 
@@ -113,36 +127,35 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-
-                    <DockPanel HorizontalAlignment="Left"  VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" >
-                        <Label x:Name="NameItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Название продукта:" FontSize="30" Width="371" Foreground="White"/>
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1">
+                        <Label x:Name="NameItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Название продукта:" FontSize="20" Width="371" Foreground="White"/>
                         <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="NameItemTextBox" DockPanel.Dock="Left" Height="70" Width="330"  BorderBrush="DimGray" Margin="5,0,0,0"/>
                     </DockPanel>
 
-                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row ="1">
-                        <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="30" Width="371" Foreground="White"/>
-                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="30"/>
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="1">
+                        <Label x:Name="Date" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Дата покупки продукта:" FontSize="20" Width="371" Foreground="White"/>
+                        <DatePicker x:Name="ProductDateBuyPicker" DockPanel.Dock="Left" Height="70" Width="330" FontSize="20"/>
                     </DockPanel>
 
-                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900"  Grid.Column="1" Grid.Row ="2" >
-                        <Label x:Name="PriceLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Цена товара:" FontSize="30" Width="371" Foreground="White"/>
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="90" Width="900" Grid.Column="1" Grid.Row="2">
+                        <Label x:Name="PriceLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Цена товара:" FontSize="20" Width="371" Foreground="White"/>
                         <TextBox Style="{StaticResource CustomTextBoxStyle}" x:Name="ProductPriceTextBox" DockPanel.Dock="Left" Height="70" Width="330" BorderBrush="DimGray"/>
                     </DockPanel>
 
-                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="163" Width="900"  Grid.Column="1" Grid.Row ="3" >
-                        <Label x:Name="DescriptionLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="30" Width="371" Foreground="White"/>
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="163" Width="900" Grid.Column="1" Grid.Row="3">
+                        <Label x:Name="DescriptionLabel" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Описание товара:" FontSize="20" Width="371" Foreground="White"/>
                         <TextBox Style="{StaticResource CustomTextBoxStyle}" 
-         x:Name="DescriptionTextBox" 
-         FontSize="15" 
-         DockPanel.Dock="Right" 
-         Height="164" 
-         Width="330" 
-         BorderBrush="DimGray" 
-         TextWrapping="Wrap"/>
+                                 x:Name="DescriptionTextBox" 
+                                 FontSize="15" 
+                                 DockPanel.Dock="Right" 
+                                 Height="164" 
+                                 Width="330" 
+                                 BorderBrush="DimGray" 
+                                 TextWrapping="Wrap"/>
                     </DockPanel>
 
-                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="900"  Grid.Column="1" Grid.Row ="4"  >
-                        <Label x:Name="ImageItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Фото товара:" FontSize="30" Width="371" Foreground="White"/>
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="900" Grid.Column="1" Grid.Row="4">
+                        <Label x:Name="ImageItem" FontFamily="Gill Sans Ultra Bold" DockPanel.Dock="Left" Content="Фото товара:" FontSize="20" Width="371" Foreground="White"/>
                         <Button Height="40" Width="299" Content="Добавит изображение" Background="DarkGray" Foreground="White" Click="ImageAdd_Click">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}">
@@ -152,7 +165,7 @@
                         </Button>
                     </DockPanel>
 
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="426,10,0,0" Width="421"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="5" Click="ProductAdd_Click">
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="426,10,0,0" Width="421"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row="5" Click="ProductAdd_Click">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -174,8 +187,8 @@
                         <ColumnDefinition Width="300*"/>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="ProductAvailabilityDataGrid" AutoGenerateColumns="False" Loaded="ProductAvailabilityDataGrid_OnLoaded" CanUserAddRows="False" Grid.Column="0"
-                       Style="{StaticResource DataGridStyle}" 
-                       RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                              Style="{StaticResource DataGridStyle}" 
+                              RowStyle="{StaticResource DataGridRowStyle}" Grid.ColumnSpan="2" Grid.RowSpan="3">
                         <DataGrid.Columns>
                             <DataGridTextColumn MinWidth="350" Header="Название товара" Binding="{Binding ProductName}" />
 
@@ -183,39 +196,24 @@
                             <DataGridTextColumn MinWidth="250" Header="Дата закупки" Binding="{Binding ProductDateBuy}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Куплено" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="0">
+                    <Button Content="Куплено" Click="PurchaseProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row="0">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Открыть карточку товара" Click="OpenCardProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row ="1" Grid.RowSpan="1" >
+                    <Button Content="Открыть карточку товара" Click="OpenCardProduct_click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="582"  FontFamily="Gill Sans Ultra Bold" Background="SlateGray"  Foreground="White" Grid.Column="1" Grid.Row="1" Grid.RowSpan="1">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-
                 </Grid>
             </TabItem>
         </TabControl>
 
-        <Button Height="30" Width="100" Content="Login" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="17" Background="DarkGray" Foreground="White" Click="Login_Click" Grid.Column="1" Grid.Row="0">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
 
-        <Button Height="30" Width="100" Content="AdminPanel" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="17" Background="DarkGray" Foreground="White" Click="AdminPanel_Click" Grid.Column="2">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
     </Grid>
 </Window>

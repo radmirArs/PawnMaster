@@ -14,9 +14,9 @@ namespace PawnMasterWPF
 
         public void FillingInData(Product selectedProduct)
         {
-            string productName = selectedProduct.ProductName;
-            string productDescription = selectedProduct.ProductDescription;
-            byte[] productImageData = selectedProduct.ProductImageData;
+            string productName = selectedProduct.Name;
+            string productDescription = selectedProduct.Description;
+            byte[] productImageData = selectedProduct.ImageData;
 
             if (productImageData != null)
             {
